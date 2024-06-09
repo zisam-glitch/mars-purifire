@@ -1,284 +1,252 @@
-import Image from 'next/image'
-import Link from 'next/link';
+import React from "react";
+import Link from "next/link";
+import Image from "next/image";
 
-import Navbar from './componants/navbar/navbar'
-import Footer from './componants/footer/footer';
-import ScrollTop from './componants/scrollTop';
-import AppHeroText from './componants/app/appHeroText';
-import About from './componants/app/about';
+import MarketingNavbar from "../app/componants/navbar/marketingNavbar";
+import ClientsThree from "../app/componants/clients/clientsThree";
+import GetInTuchThree from "../app/componants/getInTuch/getInTuchThree";
+import FooterFour from "../app/componants/footer/footerFour";
+import ScrollTop from "../app/componants/scrollTop";
+import Modal from "../app/componants/marketing/modal";
+import Accordian from "../app/componants/marketing/accordian";
+import Counter from "../app/componants/marketing/counter";
 
-import {FiAirplay,PiBrowsersBold, FiEye, BsBootstrapFill, BiWater,FiMoon, TbIcons,BiCube, BsBezier2,BiLogoSass,PiSealCheckFill,FiSettings,SiPhp,BsFillFileEarmarkImageFill,FiCamera,FaGooglePlay,FiGitCommit,BsCode,MdUpdate,RiUserHeartFill,SiNextdotjs,BiLogoReact} from "./assets/icons/vander"
+import {MdArrowForward,FiCodesandbox,FiSend,FiStar,FiBookmark,FiUsers,FiMessageCircle,AiOutlineCheckCircle} from "../app/assets/icons/vander"
 
-export default function Home() {
-  let templateData =[
-    {
-        image:"/images/demos/business.png",
-        title:"BUSINESS",
-        link:'/index-business'
-    },
-    {
-        image:"/images/demos/digital-agency.png",
-        title:"DIGITAL AGENCY",
-        link:'/index-digital-agency'
-    },
-    {
-        image:"/images/demos/startup.png",
-        title:"STARTUP",
-        link:"/index-startup"
-    },
-    {
-        image:"/images/demos/saas.png",
-        title:"SAAS",
-        link:"/index-saas"
-    },
-    {
-        image:"/images/demos/marketing.png",
-        title:"MARKETING",
-        link:"/index-marketing"
-    },
-    {
-        image:"/images/demos/crypto.png",
-        title:"CRYPTOCURRENCY",
-        link:"/index-cryptocurrency"
-    },
-    {
-        image:"/images/demos/gym.png",
-        title:"GYM & FITNESS",
-        link:"/index-gym"
-    },
-    {
-        image: "/images/demos/restaurant.png",
-        title:"RESTAURANT",
-        link:"/index-restaurant"
-    },
-    {
-        image:"/images/demos/job.png",
-        title:"JOB & CAREERS",
-        link:"/index-job",
-        tag1:"Onepage & Multi-use"
-    },
-    {
-        image:"/images/demos/personal.png",
-        title:"PERSONAL",
-        link:"/index-personal"
-    },
-    {
-        image:"/images/demos/portfolio.png",
-        title:"PORTFOLIO",
-        link:"/index-portfolio"
-    },
-    {
-        image:"/images/demos/portfolio-agency.png",
-        title:"PORTFOLIO AGENCY",
-        link:"/index-portfolio-agency"
-    },
-    {
-        image:"/images/demos/studio.png",
-        title:"STUDIO",
-        link:"/index-studio"
-    },
-    {
-        image:"/images/demos/business.png",
-        title:"BUSINESS",
-        link:"/index-multi-business",
-        tag1:"MULTI-USE"
-    },
-    {
-        image:"/images/demos/photography.png",
-        title:"PHOTOGRAPHY",
-        link:"/index-photography",
-        tag1:"MULTI-USE"
-    },
-    {
-        image:"/images/demos/cowork.png",
-        title:"CO-WORKING SPACE",
-        link:"/index-co-working",
-    },
-    {
-        image:"/images/demos/blog.png",
-        title:"CMINIMAL BLOG",
-        link:"/index-blog",
-        tag1:"MULTI-USE",
-    },
-]
-let featuresData = [
-    {
-        icon:SiNextdotjs,
-        title:'Next Js 13.5.5'
-    },
-    {
-        icon:SiNextdotjs,BiLogoReact,
-        title:'React Js 18.2.0'
-    },
-    {
-        icon:BsBootstrapFill,
-        title:'Bootstrap 5.3.2'
-    },
-    {
-        icon:BiLogoSass,
-        title:'Built With SCSS'
-    },
-    {
-        icon:FiAirplay,
-        title:'Fully Responsive'
-    },
-    {
-        icon:PiBrowsersBold,
-        title:'Browser Compatibility'
-    },
-    {
-        icon:FiEye,
-        title:'Retina Ready'
-    },
-    {
-        icon:BiWater,
-        title:'Parallax Demos'
-    },
-    {
-        icon:FiMoon,
-        title:'Dark Supported Theme'
-    },
-    {
-        icon:TbIcons,
-        title:'React Icons'
-    },
-    {
-        icon:BiCube,
-        title:'Material Design Icon'
-    },
-    {
-        icon:FiSettings,
-        title:'Easy to customize'
-    },
-    {
-        icon:BsFillFileEarmarkImageFill,
-        title:'Free Illustrator Image'
-    },
-    {
-        icon:FiCamera,
-        title:'Free Images'
-    },
-    {
-        icon:FaGooglePlay,
-        title:'Free Google Fonts'
-    },
-    {
-        icon:FiGitCommit,
-        title:'Well Commented Code'
-    },
-    {
-        icon:BsCode,
-        title:'Clean Code'
-    },
-    {
-        icon:MdUpdate,
-        title:'Free Updates'
-    },
-    {
-        icon:RiUserHeartFill,
-        title:'Developer Friendly'
-    },
-]
-  return (
-    <>
-      <Navbar navClass="defaultscroll sticky" manuClass="navigation-menu nav-right" smallButton={false}/>
 
-      <section className="bg-half-170 pb-0 d-table w-100 bg-soft-primary" style={{backgroundImage:'url("/images/live/home-shape.png")'}}  id="home">
-        <div className="container">
-            <div className="row justify-content-center">
-                <div className="col-lg-12 text-center">
-                    <div className="title-heading">
-                        <Image src="/images/logo-icon-80.png" width={90} height={80} alt=""/>
-                        <AppHeroText/>
-                        <p className="para-desc text-muted mx-auto mb-0">Start working with Fronter one page and multipurpose parallax template that can provide everything you need.</p>
-                        <div className="mt-4 pt-2"> 
-                            <Link href="#landing" className="btn btn-primary rounded mouse-down mr-2 mb-2">View Demos</Link>
+export default function IndexMarketing(){
+
+    return(
+        <>
+        <MarketingNavbar/>
+        <section className="bg-half-170 bg-soft-primary d-flex align-items-center" id="home">
+            <div className="container">
+                <div className="row align-items-center">
+                    <div className="col-md-6">
+                        <div className="title-heading">
+                            <h6 className="fw-normal">Fronter Marketing</h6>
+                            <h4 className="heading fw-semibold text-dark mb-4">Increase Your Business With Fronter</h4>
+                            <p className="text-muted para-desc mb-0">Launch your campaign and benefit from our expertise on designing and managing conversion centered bootstrap html page.</p>
+                        
+                            <div className="subcribe-form mt-4 mb-3 pt-2">
+                                <form className="ms-0">
+                                    <input type="email" id="email2" name="email" className="rounded-pill bg-white-50 border" placeholder="Your Email Address :"/>
+                                    <button type="submit" className="btn btn-pills btn-primary">Try it for free<MdArrowForward className="ms-1"/></button>
+                                </form>
+                            </div>
+                            <span className="text-muted">Looking for help? <Link href="#" scroll={false} className="text-primary">Get in touch with us</Link></span>
                         </div>
+                    </div>
 
-                        <div className="mt-5 d-md-block d-none position-relative" style={{zIndex: "1"}}>
-                            <About/>
+                    <div className="col-md-6 mt-4 pt-2 mt-sm-0 pt-sm-0">
+                        <div className="ms-lg-5">
+                            <div className="position-relative">
+                                <Image src='/images/marketing.png' width={0} height={0} sizes="100vw" style={{width:'100%', height:'auto'}} className="img-fluid" alt=""/>
+                                <Modal/>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
+        <section className="py-5 bg-primary">
+            <div className="container">
+                <Counter/>
+            </div>
+        </section>
+        <section className="section" id="features">
+            <div className="container position-relative">
+                <div className="row">
+                    <div className="col-lg-8">
+                        <div className="section-title mb-4 pb-2">
+                            <h4 className="title mb-4">Instant Smart Solutions <br/> With Fronter</h4>
+                            <p className="text-muted para-desc mb-0">Launch your campaign and benefit from our expertise on designing and managing conversion centered bootstrap html page.</p>
+                        </div>
 
+                        <div className="row">
+                            <div className="col-md-6 mt-4 pt-2">
+                                <div className="card features feature-primary feature-clean feature-transition p-4 py-5 border-0 shadow rounded-lg overflow-hidden">
+                                    <FiCodesandbox className="fea icon-lg fea-icon"/>
+                                    <div className="content mt-4">
+                                        <h5>User Friendly</h5>
+                                        <p className="text-muted mt-3">The phrasal sequence of the Lorem Ipsum text is now so that many DTP programmes can generate</p>
+        
+                                        <Link href="/page-service-detail" className="link">Read more<MdArrowForward/></Link>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div className="col-md-6 mt-4 pt-2">
+                                <div className="card features feature-primary feature-clean feature-transition p-4 py-5 border-0 shadow rounded-lg overflow-hidden">
+                                    <FiSend className="fea icon-lg fea-icon"/>
+                                    <div className="content mt-4">
+                                        <h5>Super Fast</h5>
+                                        <p className="text-muted mt-3">The phrasal sequence of the Lorem Ipsum text is now so that many DTP programmes can generate</p>
+        
+                                        <Link href="/page-service-detail" className="link">Read more <MdArrowForward/></Link>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div className="col-md-6 mt-4 pt-2">
+                                <div className="card features feature-primary feature-clean feature-transition p-4 py-5 border-0 shadow rounded-lg overflow-hidden">
+                                    <FiStar className="fea icon-lg fea-icon"/>
+                                    <div className="content mt-4">
+                                        <h5>Insightful Analytics</h5>
+                                        <p className="text-muted mt-3">The phrasal sequence of the Lorem Ipsum text is now so that many DTP programmes can generate</p>
+        
+                                        <Link href="/page-service-detail" className="link">Read more <MdArrowForward/></Link>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div className="col-md-6 mt-4 pt-2">
+                                <div className="card features feature-primary feature-clean feature-transition p-4 py-5 border-0 shadow rounded-lg overflow-hidden">
+                                    <FiBookmark className="fea icon-lg fea-icon"/>
+                                    <div className="content mt-4">
+                                        <h5>Highly Rated</h5>
+                                        <p className="text-muted mt-3">The phrasal sequence of the Lorem Ipsum text is now so that many DTP programmes can generate</p>
+        
+                                        <Link href="/page-service-detail" className="link">Read more <MdArrowForward/></Link>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>                        
+                    </div>
+
+                    <div className="col-lg-4">
+                        <div className="row">
+                            <div className="col-lg-12 col-md-6 mt-4 pt-2">
+                                <div className="card features feature-primary feature-clean feature-transition p-4 py-5 border-0 shadow rounded-lg overflow-hidden">
+                                    <FiUsers className="fea icon-lg fea-icon"/>
+                                    <div className="content mt-4">
+                                        <h5>User Forum Forum</h5>
+                                        <p className="text-muted mt-3">The phrasal sequence of the Lorem Ipsum text is now so that many DTP programmes can generate</p>
+        
+                                        <Link href="/page-service-detail" className="link">Read more <MdArrowForward/></Link>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div className="col-lg-12 col-md-6 mt-4 pt-2">
+                                <div className="card features feature-primary feature-clean feature-transition p-4 py-5 border-0 shadow rounded-lg overflow-hidden">
+                                   <FiMessageCircle className="fea icon-lg fea-icon"/>
+                                    <div className="content mt-4">
+                                        <h5>24/7 Support</h5>
+                                        <p className="text-muted mt-3">The phrasal sequence of the Lorem Ipsum text is now so that many DTP programmes can generate</p>
+        
+                                        <Link href="/page-service-detail" className="link">Read more <MdArrowForward/></Link>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <Image src='/images/square/square-warning.png' width={500} height={500} className="img-fluid rounded-pill bg-image-position" alt=""/>
+                <Image src='/images/square/square-success.png' width={140} height={140} className="img-fluid rounded-lg avatar avatar-large bg-image-position-2 spin-anything" alt=""/>
+            </div>
+
+            <div className="container mt-100 mt-60">
+                <div className="row align-items-center">
+                    <div className="col-md-6">
+                        <div className="me-lg-5">
+                            <Image src='/images/shape-image.png' width={0} height={0} sizes="100vw" style={{width:'100%', height:'auto'}} className="img-fluid" alt=""/>
+                        </div>
+                    </div>
+
+                    <div className="col-md-6 mt-4 pt-2 mt-sm-0 pt-sm-0">
+                        <div className="section-title">
+                            <h6 className="fw-normal text-primary">Fast & Effective</h6>
+                            <h4 className="title mb-4">Powerful Digitalization <br/> With Fronter</h4>
+
+                            <p className="text-muted mb-0">Get instant helpful resources about anything on the go, easily implement secure money transfer solutions, boost your daily efficiency, connect to other app users and create your own Fronter network, and much more with just a few taps. commodo consequat. Duis aute irure.</p>
+                        
+                            <div className="mt-4">
+                                <Link href="#" className="btn btn-pills btn-soft-primary">Get Started</Link>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div className="container mt-100 mt-60">
+                <div className="row align-items-center">
+                    <div className="col-md-6 order-1 order-md-2">
+                        <div className="text-lg-end">
+                            <Image src='/images/svg/revenue-graph-colour.svg' width={0} height={0} sizes="100vw" style={{width:'100%', height:'auto'}} className="img-fluid" alt=""/>
+                        </div>
+                    </div>
+
+                    <div className="col-md-6 mt-4 pt-2 mt-sm-0 pt-sm-0 order-2 order-md-1">
+                        <div className="section-title">
+                            <h6 className="fw-normal text-primary">Easy To Track</h6>
+                            <h4 className="title mb-4">Fronter Marketing <br/> Analytics For All Expenses</h4>
+
+                            <p className="text-muted">Keep a close track of all your regular expenses with insightful analytics by Fronter. Get graphical representations of your daily spendings, view trendy charts for expenses, pending payments and successful transactions from a single place. Fronter is here to help with all your financial needs.</p>
+                        
+                            <ul className="list-unstyled text-muted">
+                                <li className="mb-1"><span className="text-primary h5 me-2"><AiOutlineCheckCircle className="align-middle"/></span>Digital Marketing Solutions for Tomorrow</li>
+                                <li className="mb-1"><span className="text-primary h5 me-2"><AiOutlineCheckCircle className="align-middle"/></span>Our Talented & Experienced Marketing Agency</li>
+                                <li className="mb-1"><span className="text-primary h5 me-2"><AiOutlineCheckCircle className="align-middle"/></span>Create your own skin to match your brand</li>
+                            </ul>
+
+                            <div className="mt-4">
+                                <Link href="#" className="btn btn-pills btn-soft-primary">Get Started</Link>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section className="section bg-light overflow-hidden">
+            <div className="container">
+                <div className="row justify-content-center">
+                    <div className="col-12">
+                        <div className="section-title text-center mb-4 pb-2">
+                            <h4 className="title mb-4">See What Our Customers Have To Say</h4>
+                            <p className="text-muted para-desc mb-0 mx-auto">Launch your campaign and benefit from our expertise on designing and managing conversion centered bootstrap html page.</p>
+                        </div>
+                    </div>
+                </div>
+                <ClientsThree/>
+            </div>
+
+            <div className="container mt-100 mt-60">
+                <div className="row align-items-center">
+                    <div className="col-md-6">
+                        <div className="me-lg-5 position-relative">
+                            <Image src='/images/feature.png' width={0} height={0} sizes="100vw" style={{width:'100%', height:'auto'}} className="img-fluid position-relative px-5 z-index-1" alt=""/>
+                            <div className="position-absolute top-50 start-50 translate-middle">
+                                <Image src='/images/square/square-primary.png' width={500} height={500} className="rounded-pill" alt=""/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="col-md-6 mt-4 pt-2 mt-sm-0 pt-sm-0">
+                        <div className="section-title">
+                            <h6 className="text-primary fw-normal">How it work?</h6>
+                            <h4 className="title mb-4">Dont wait. <br/> The time will never be just right.</h4>
+                            <Accordian/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <GetInTuchThree/>
         <div className="container-fluid">
             <div className="row">
-                <div className="col-12 px-0">
-                    <div className="live-preview mt-4">
-                        <Image src="/images/live/hero.png" width={0} height={0} sizes='100vw' style={{width:"100%", height:"auto"}} alt="" className="img-fluid position-relative border-bottom"/>
+                <div className="col-12 p-0">
+                    <div className="card map border-0">
+                        <div className="card-body p-0">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d39206.002432144705!2d-95.4973981212445!3d29.709510002925988!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8640c16de81f3ca5%3A0xf43e0b60ae539ac9!2sGerald+D.+Hines+Waterwall+Park!5e0!3m2!1sen!2sin!4v1566305861440!5m2!1sen!2sin" style={{border:"0"}} allowFullScreen title="myFram"></iframe>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-      </section>
-
-      <div className="position-relative">
-            <div className="home-shape-arrow">
-                {/* <Link href="/features"><i className="mdi mdi-arrow-down arrow-icon text-dark h5 shadow-md"></i></Link> */}
-                <Link href="features"><i className="mdi mdi-arrow-down arrow-icon text-dark h5 shadow-md"></i></Link>
-            </div>
-        </div>
-        <section className="section" id="landing">
-            <div className="container">
-                <div className="row justify-content-center">
-                    <div className="col-12">
-                        <div className="section-title mb-4 mb-md-5 text-center">
-                            <h4>Template Demos</h4>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="row">
-                    {templateData.map((item,index)=>{
-                        return(
-                            <div className="col-md-6 col-12 mt-5" key={index}>
-                                <div className="text-center">
-                                    <div className="demos-box rounded-md shadow-md text-center border-0 overflow-hidden">
-                                        <Link href={item.link} target="_blank">
-                                            <Image src={item.image}  width={0} height={0} sizes='100vw' style={{width:"100%", height:'auto'}} className="img-fluid" alt="demo-img"/>
-                                        </Link>
-                                    </div>
-                                    <h6 className="title text-uppercase mt-4">{item.title} {item?.tag2 ? <span className="badge rounded-lg bg-danger ms-2">{item.tag2}</span> :""} {item?.tag1 ? <span className="badge rounded-lg bg-warning ms-2">{item.tag1}</span> :""} </h6>
-                                </div>
-                            </div>
-                        )
-                    })}
-                </div>
-            </div>
-        </section>
-        <section className="section bg-light" id="features">
-            <div className="container">
-                <div className="row justify-content-center">
-                    <div className="col-12">
-                        <div className="section-title mb-4 text-center">
-                            <h4>Template Features</h4>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="row">
-                    {featuresData.map((item, index) =>{
-                        let Icon = item.icon
-                        return(
-                            <div className="col-lg-3 col-md-6 mt-4 pt-2" key={index}>
-                                <div className="d-flex align-items-center features feature-primary">
-                                    <div className="feature-icon text-center rounded">
-                                        <Icon className=" h4 icon mb-0"/>
-                                    </div>
-                                    <div className="flex-1 ms-3">
-                                        <h6 className="mt-0">{item.title}</h6>
-                                    </div>
-                                </div>
-                            </div>
-                        )
-                    })}
-                </div>
-            </div>
-        </section>
-        <Footer/>
+        <FooterFour/>
         <ScrollTop/>
-    </>
-  )
+        </>
+    )
 }
